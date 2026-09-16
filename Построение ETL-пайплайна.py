@@ -8,7 +8,7 @@ from airflow.decorators import dag, task
 from airflow.operators.python import get_current_context
 
 
-def ch_get_df(query='Select 1', host='http://clickhouse.lab.karpov.courses:8123', user='student', password='dpo_python_2020'):
+def ch_get_df(query='Select 1', host='http://clickhouse.lab.karpov.courses:8123', user='student', password='#########'):
     r = requests.post(host, data=query.encode("utf-8"), auth=(user, password), verify=False)
     result = pd.read_csv(StringIO(r.text), sep='\t')
     return result
@@ -16,7 +16,7 @@ def ch_get_df(query='Select 1', host='http://clickhouse.lab.karpov.courses:8123'
 connection_test = {'host': 'http://clickhouse.lab.karpov.courses:8123',
                       'database':'test',
                       'user':'student-rw', 
-                      'password':'656e2b0c9c'
+                      'password':'#########' # должен быть пароль
                      }
 
 
